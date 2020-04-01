@@ -1,6 +1,5 @@
 package Project1;
 import java.util.Scanner;
-
 import ver04.PhoneBookManager;
 
 
@@ -16,6 +15,7 @@ public class PhoneBookVer04 {
 	}
 	public static void main(String[] args) {
 		
+		//배열의 크기=100
 		PhoneBookManager manager = 
 				new PhoneBookManager(100);
 
@@ -44,7 +44,7 @@ public class PhoneBookVer04 {
 				case 5://프로그램 종료
 					System.out.println("프로그램 종료");
 					return;	
-				}
-			}			
+			}
+		}			
 	}
 }

@@ -1,5 +1,7 @@
 package ver08;
 
+import java.util.HashSet;
+
 public class MenuSelectException extends Exception{
 	
 	public MenuSelectException() {

@@ -1,14 +1,15 @@
 package ver05;
 
 public class PhoneCompanyInfo extends PhoneInfo{
-
+	//멤버메소드
 	String company; 
 	
-	
+	//PhoneInfo에서 상속받은 인자 name, phoneNumber와company
 	public PhoneCompanyInfo(String name, String phoneNumber, String company) {
 		super(name, phoneNumber);
 		this.company = company;
 	}
+	//메소드
 	@Override
 	public void showPhoneInfo() {
 		System.out.println("-----------------");

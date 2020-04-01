@@ -52,8 +52,13 @@ public class PhoneBookManager implements SubMenuItem, MenuItem{
 						return;	
 					}					
 				}
+				catch(MenuSelectException e) {
+					
+				}
+				
 				catch(InputMismatchException e){
 					System.out.println("숫자를 입력하세요");
+					scan.nextLine();
 				}
 				catch(NullPointerException e) {
 					System.out.println("검색결과가 없어요");
@@ -154,7 +159,7 @@ public class PhoneBookManager implements SubMenuItem, MenuItem{
 		public void dataAllShow() {
 			
 			for(PhoneInfo st:phoneInfo) {
-				System.out.println(phoneInfo.toString());		
+				System.out.println(st.toString());		
 			}
 		}
 		public void checkName(String name1) {

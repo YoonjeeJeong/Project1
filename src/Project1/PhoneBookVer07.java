@@ -10,10 +10,13 @@ import ver07.MenuItem;
 public class PhoneBookVer07 {
 
 	public static void main(String[] args) throws MenuSelectException {
-				
+			
+		try {
 		PhoneBookManager phonemanage = new PhoneBookManager();
-		phonemanage.printMenu();
-				
-								
+			phonemanage.printMenu();
+		}	
+		catch(MenuSelectException e) {
+			
+		}
 	}
 }

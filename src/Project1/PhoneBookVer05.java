@@ -3,7 +3,6 @@ import java.util.Scanner;
 import ver05.PhoneBookManager;
 import ver05.MenuItem;
 
-
 public class PhoneBookVer05 implements MenuItem{
 	
 	public static void printMenu() {
@@ -16,6 +15,7 @@ public class PhoneBookVer05 implements MenuItem{
 	}
 	public static void main(String[] args) {
 		
+		//배열의 크기=100
 		PhoneBookManager manager = 
 				new PhoneBookManager(100);
 

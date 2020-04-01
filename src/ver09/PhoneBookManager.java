@@ -47,10 +47,6 @@ public class PhoneBookManager extends IConnectimpl{
 			
 			Scanner scan = new Scanner(System.in);
 			
-			//IConnectimpl iconnect = new IConnectimpl("kosmo", "1234");
-			//iconnect.connect("kosmo", "1234");
-			//System.out.println("연결");
-			
 			try {
 				String query = "INSERT INTO phonebook_tb VALUES (?, ?, ?)";
 				psmt = con.prepareStatement(query);
@@ -73,17 +69,12 @@ public class PhoneBookManager extends IConnectimpl{
 			}
 			catch(SQLException e) {
 				e.printStackTrace();
-			}
-//			finally {
-//				close();
-//			}			
+			}						
 		}
 		public void dataSearch() {
 			
 			Scanner scan = new Scanner(System.in);
 			
-//			IConnectimpl iconnect = new IConnectimpl();
-//			iconnect.connect("kosmo", "1234");
 			String name1;
 			System.out.println("검색할 이름: ");
 			name1 = scan.nextLine();
@@ -111,19 +102,12 @@ public class PhoneBookManager extends IConnectimpl{
 				System.out.println("쿼리오류!");
 				e.printStackTrace();
 			}
-//			finally {
-//				close();
-//			}
 		}
 		public void dataDelete() {
 			
 			Scanner scan = new Scanner(System.in);
 			
-//			IConnectimpl iconnect = new IConnectimpl();
-//			iconnect.connect("kosmo", "1234");
-//			connect("kosmo", "1234");
 			String name;
-			
 			
 			try{			
 				
@@ -144,8 +128,6 @@ public class PhoneBookManager extends IConnectimpl{
 			}
 		}
 		public void dataAllShow() {
-//			IConnectimpl iconnect = new IConnectimpl();
-//			iconnect.connect("kosmo", "1234");
 			
 			try {
 				String query = "SELECT * from phonebook_tb";
@@ -166,10 +148,7 @@ public class PhoneBookManager extends IConnectimpl{
 			catch (SQLException e) {
 				System.out.println("쿼리오류!");
 				e.printStackTrace();
-			}
-//			finally {
-//				close();
-//		}			
+		}
 	}
 }
 	

@@ -1,8 +1,6 @@
 package Project1;
 import java.util.Scanner;
-
 import ver03.PhoneBookManager;
-
 
 public class PhoneBookVer03 {
 	
@@ -16,6 +14,7 @@ public class PhoneBookVer03 {
 	}
 	public static void main(String[] args) {
 		
+		//배열에 최대 100개의 정보를 저장할 수 있다 
 		PhoneBookManager manager = 
 				new PhoneBookManager(100);
 

@@ -63,10 +63,6 @@ public class IConnectimpl implements IConnect{
 		Scanner scan = new Scanner(System.in);
 		System.out.print(title +"을 입력(exit->종료)");
 		String inputStr = scan.nextLine();
-		/*
-		 equalsIgnoreCase() 아래 참고:
-		 	equals()메소드와 동일하게 문자열이 같은지 비교하는 메소드.
-		 	다른점: 대소문자는 구분하지 않는다.*/
 		if("EXIT".equalsIgnoreCase(inputStr)) {
 			System.out.println("프로그램을 종료합니다");
 			close();

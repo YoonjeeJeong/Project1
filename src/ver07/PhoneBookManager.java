@@ -1,5 +1,4 @@
 package ver07;
-import java.awt.ScrollPaneAdjustable;
 import java.util.HashSet;
 import java.util.InputMismatchException;
 import java.util.Iterator;
@@ -47,8 +46,12 @@ public class PhoneBookManager implements SubMenuItem, MenuItem{
 						return;	
 					}					
 				}
+				catch(MenuSelectException e) {
+					System.out.println("1-5사이를 입력하세요!");
+				}
 				catch(InputMismatchException e){
 					System.out.println("숫자를 입력하세요");
+					scan.nextLine();
 				}
 				catch(NullPointerException e) {
 					System.out.println("검색결과가 없어요");
@@ -72,7 +75,7 @@ public class PhoneBookManager implements SubMenuItem, MenuItem{
 				phoneNumber1 = scan.nextLine();
 				
 				PhoneInfo phoneinfo = new PhoneInfo(name1, phoneNumber1);
-				phoneInfo.add(phoneinfo);
+				phoneInfo.add(phoneinfo);//데이터 입력됨
 			}
 			else if(choice==SCHOOLFRIEND) {
 				System.out.println("이름: ");
@@ -87,7 +90,7 @@ public class PhoneBookManager implements SubMenuItem, MenuItem{
 				
 				PhoneSchoolInfo schoolinfo = 
 						new PhoneSchoolInfo(name1, phoneNumber1, major1, year1);
-				phoneInfo.add(schoolinfo);
+				phoneInfo.add(schoolinfo);//데이터 입력됨
 			}
 			else if(choice==COWORKER) {
 				System.out.println("이름: ");
@@ -100,12 +103,13 @@ public class PhoneBookManager implements SubMenuItem, MenuItem{
 				
 				PhoneCompanyInfo companyinfo = 
 						new PhoneCompanyInfo(name1, phoneNumber1, company1);
-				phoneInfo.add(companyinfo);
+				phoneInfo.add(companyinfo);//데이터 입력됨
 			}
 			else {
 				System.out.println("숫자만 입력하세요");
 			}
 		}
+		//데이터 검색
 		public void dataSearch() {
 			boolean b=false;//검색결과 유무확인
 			Scanner scan = new Scanner(System.in);
@@ -118,15 +122,16 @@ public class PhoneBookManager implements SubMenuItem, MenuItem{
 					PhoneInfo phoneInfo = itr.next();
 					if(name.equals(phoneInfo.name)) {
 						System.out.println(phoneInfo);
-						b = true;
+						b = true;//검색결과 있음
 						System.out.println("요청하신 정보를 찾았습니다");
 						}
 					}
-					if(b==false) {
+					if(b==false) {//검색결과 없음
 						NullPointerException nullPointerExcept = new NullPointerException();
 						throw nullPointerExcept;
 			}
 		}
+		//데이터 삭제
 		public void dataDelete() {
 			 Scanner scan = new Scanner(System.in);
 			 System.out.println("삭제할 이름을 입력하세요");
@@ -138,20 +143,22 @@ public class PhoneBookManager implements SubMenuItem, MenuItem{
 			 while(itr.hasNext()) {
 				 PhoneInfo phoneInfo = itr.next();
 				 if(deleteName.equals(phoneInfo.name)) {
-					 itr.remove();
+					 itr.remove();//검색한 이름이 존재할 경우 삭제
 					 System.out.println("제거되었습니다");
 				 }
-				 if(deleteIndex==-1) {
-					 System.out.println("삭제된 데이터 없음");
+				 else if(deleteIndex==-1) {
 				 }
 			 }
 		}
+		//전체 데이터 출력
 		public void dataAllShow() {
 			
-			for(PhoneInfo st:phoneInfo) {
-				System.out.println(phoneInfo.toString());		
+			for(PhoneInfo st : phoneInfo) {
+				System.out.println(st.toString());
+				System.out.println("");
 			}
 		}
+		//중복체크 
 		public void checkName(String name1) {
 			
 			int num = 0;
@@ -160,14 +167,15 @@ public class PhoneBookManager implements SubMenuItem, MenuItem{
 			while(itr.hasNext()) {
 				PhoneInfo phoneinfo = itr.next();
 				if(name1.equals(phoneinfo.name)) {
+					//중복 덮어쓰기 옵션
 					System.out.println("중복된 이름. 선택: 1.덮어쓰기 2.입력메뉴로 가기");
 					num = scan.nextInt();
 					if(num==1) {
-						itr.remove();
+						itr.remove();//덮어쓰기
 						System.out.println("덮어쓰기 완료");
 					}
 					else if(num==2){
-						dataInput();
+						dataInput();//덮어쓰기 안 할 경우 입력으로 돌아감
 				}		
 			}
 		}			

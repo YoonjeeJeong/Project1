@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class PhoneBookManager{
 		
+		//전화번호부 배열
 		private PhoneInfo[] phoneInfoArray;
 		private int numofInfo;
 		
@@ -10,7 +11,8 @@ public class PhoneBookManager{
 			phoneInfoArray = new PhoneInfo[num]; 
 			numofInfo = 0;
 		}
-
+		
+		//정보입력
 		public void dataInput() {
 			Scanner scan = new Scanner(System.in);
 			System.out.println("옵션: 1.일반, 2.동창, 3.회사");
@@ -18,6 +20,7 @@ public class PhoneBookManager{
 			scan.nextLine();
 			String name, phoneNumber, major, year, company;
 			
+			//일반 정보입력
 			if(choice==1) {
 				System.out.println("이름: ");
 				name = scan.nextLine();
@@ -26,6 +29,7 @@ public class PhoneBookManager{
 				PhoneInfo phoneinfo = new PhoneInfo(name, phoneNumber); 												
 				phoneInfoArray[numofInfo++] = phoneinfo;
 			}
+			//동창 정보입력
 			else if(choice==2) {
 				System.out.println("이름: ");
 				name = scan.nextLine();
@@ -39,6 +43,7 @@ public class PhoneBookManager{
 						new PhoneSchoolInfo(name, phoneNumber, major, year);
 				phoneInfoArray[numofInfo++] = schoolinfo;
 			}
+			//회사명 정보입력
 			else if(choice==3) {
 				System.out.println("이름: ");
 				name = scan.nextLine();
@@ -51,19 +56,21 @@ public class PhoneBookManager{
 				phoneInfoArray[numofInfo++] = companyinfo;
 			}
 		}
+		//데이터 검색
 		public void dataSearch() {
 			Scanner scan = new Scanner(System.in);
 			System.out.println("검색할 이름을 입력하세요");
 			String name = scan.nextLine();
 			
+			//이름을 검색해서 배열속에 이름이 있다면 정보를 출력한다
 			for(int i=0 ; i<numofInfo ; i++) {
-				System.out.println("검색중인 이름: "+phoneInfoArray[i].name);
 				if(phoneInfoArray[i].name.equals(name)) {
 					System.out.println("요청하신 정보를 찾았습니다");
 					phoneInfoArray[i].showPhoneInfo();
 				}
 			}	
 		}
+		//데이터 삭제
 		public void dataDelete() {
 			 Scanner scan = new Scanner(System.in);
 			 System.out.println("삭제할 이름을 입력하세요");
@@ -76,9 +83,11 @@ public class PhoneBookManager{
 					 numofInfo--;
 				 }
 			}
+			//삭제할 데이터가 없는 경우 
 			if(deleteIndex==- 1) {
 				System.out.println("삭제된 데이터가  없어요");
 			}
+			//배열에서 삭제되고 한칸 앞으로 이동한다
 			else {
 				for(int i=deleteIndex ; i<numofInfo; i++) {
 					phoneInfoArray[i] = phoneInfoArray[i+1];
@@ -86,6 +95,7 @@ public class PhoneBookManager{
 			System.out.println("데이터 "+deleteIndex+" 번이 삭제되었습니다");
 			}
 		}
+		//전체정보 출력
 		public void dataAllShow() {
 			for(int i=0; i<numofInfo ;i++) {
 				phoneInfoArray[i].showPhoneInfo();
